@@ -38,24 +38,10 @@ void main()
 			graph[i][j] = 0;
 		}
 	}
-
 	dye_node = new Dye[course_num+1];
 	dye_num = 0;
 	graph_init();
 	dye_node[0].color = 1;
-	cout << endl;
-	for (int i = 0; i < course_num; i++)
-	{
-		if (i < 10)
-			cout << " " << i << "   ";
-		else
-			cout << i << "   ";
-		for (int j = 0; j < i + 1; j++)
-		{
-			cout << graph[i][j] << " ";
-		}
-		cout << endl;
-	}
 	int id;
 	while (dye_num != course_num)
 	{
