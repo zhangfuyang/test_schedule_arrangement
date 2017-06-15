@@ -123,7 +123,7 @@ void output()
 		while (j != stu[i].course_num)
 		{
 			dye_id = find_dye_id(stu[i].course[j]);
-			each += (dye_node[dye_id].color - (j * basic + 1)) * (dye_node[dye_id].color - (j * basic + 1));
+			each += abs((dye_node[dye_id].color - (j * basic + 1)));
 			j++;
 		}
 		each /= stu[i].course_num;

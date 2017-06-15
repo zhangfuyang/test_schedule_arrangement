@@ -213,10 +213,17 @@ int update()
 	srand((unsigned)time(NULL));
 	while (1)
 	{
-		t = (int)(course_num - 1)*rand() / (RAND_MAX + 1);
-		if (course[t].dye == false)
+		t = (int)(course_num - dye_num)*rand() / (RAND_MAX + 1);
+		for (int i = 0; i < course_num; i++)
 		{
-			return t;
+			if (course[i].dye == false && t>2)
+			{
+				t--;
+			}
+			else if (course[i].dye == false && t <= 2)
+			{
+				return i;
+			}
 		}
 	}
 }
