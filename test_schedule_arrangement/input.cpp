@@ -23,14 +23,15 @@ void input_course(int &course_num, const char* file)
 	course_num = k;
 	fp.close();
 }
-void input_course2(int course_num, string* course, const char* file)
+void input_course2(int course_num, Course* course, const char* file)
 {
 	ifstream fp2(file);
 	int k = 0;
 	string str;
 	while (getline(fp2, str))
 	{
-		course[k++] = str;
+		course[k].name = str;
+		course[k++].dye = false;
 	}
 	fp2.close();
 }
@@ -96,7 +97,7 @@ void input_student2(int student_num, Student* stu, const char* file)
 			getline(fp, str);
 			for (i = 0; i < course_num; i++)
 			{
-				if (course[i] == str)
+				if (course[i].name == str)
 				{
 					stu[k].course[stu_course_num++] = i;
 				}

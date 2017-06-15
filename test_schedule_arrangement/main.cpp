@@ -6,20 +6,53 @@
 using namespace std;
 int course_num;
 int student_num;
-string *course;
+Course *course;
 Student *stu;
+int **graph;
+Dye *dye_node;
+int dye_num;
+float decision_vector[] = {0.5, 0.3, 0.15, 0.05};
 void main()
 {
 	input_course(course_num, FILE1);
-	course = new string[course_num];
+	course = new Course[course_num];
 	input_course2(course_num, course, FILE1);
-	cout << course_num;
-	for (int i = 0; i < course_num; i++)
-	{
-		cout << course[i] << endl;
-	}
 	input_student(student_num, FILE2);
 	stu = new Student[student_num];
 	input_student2(student_num, stu, FILE2);
+
+	graph = new int*[course_num];
+	for (int i = 0; i < course_num; i++)
+	{
+		graph[i] = new int[i + 1];
+		for (int j = 0; j < i + 1; j++)
+		{
+			graph[i][j] = 0;
+		}
+	}
+
+	dye_node = new Dye[course_num+1];
+	dye_num = 0;
+	graph_init();
+	dye_node[0].color = 1;
+	cout << endl;
+	for (int i = 0; i < course_num; i++)
+	{
+		for (int j = 0; j < i + 1; j++)
+		{
+			cout << graph[i][j] << " ";
+		}
+		cout << endl;
+	}
+	int id;
+	while (dye_num != course_num)
+	{
+		id = update();
+		dye_insert(id);
+	}
+	for (int i = 1; i <= course_num; i++)
+	{
+		cout<< dye_node[i].id<<" ";
+	}
 	system("pause");
 }

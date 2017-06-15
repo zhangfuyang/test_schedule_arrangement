@@ -8,4 +8,14 @@ struct Student {
 	int course_num;
 	int course[20];
 };
+
+struct Dye {
+	int id;
+	int color;
+};
+
+struct Course {
+	string name;
+	bool dye;
+};
 #endif
