@@ -11,4 +11,9 @@ int graph_value(int x, int y);
 float cal_time(int id);
 void dye_insert(int id);
 int update();
+void output();
+int random_partion(int *p, int n);
+int getMaxK(int *p, int n, int k);
+void expand();
+void copy(int* from, int* to);
 #endif

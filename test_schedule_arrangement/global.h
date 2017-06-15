@@ -10,4 +10,5 @@ extern int **graph;
 extern Dye *dye_node;
 extern int dye_num;
 extern float decision_vector[];
+extern int *course_amount;
 #endif

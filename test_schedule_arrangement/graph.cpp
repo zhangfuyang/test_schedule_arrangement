@@ -171,10 +171,6 @@ void graph_init()
 	dye_node[++dye_num].color = 1;
 	dye_node[dye_num].id = maxid;
 	course[maxid].dye = true;
-}
-
-int update()
-{
 	int color;
 	int id;
 	color = dye_node[dye_num].color;
@@ -199,11 +195,15 @@ int update()
 			{
 				dye_num++;
 				dye_node[dye_num].id = i;
-				dye_node[dye_num].color = dye_node[id].color;
+				dye_node[dye_num].color = color;
 				course[i].dye = true;
 			}
 		}
 	}
+}
+
+int update()
+{
 	int minid;
 	float min = 1000000;
 	float temp;

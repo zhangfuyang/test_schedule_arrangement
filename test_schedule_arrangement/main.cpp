@@ -11,17 +11,25 @@ Student *stu;
 int **graph;
 Dye *dye_node;
 int dye_num;
+int *course_amount;
 float decision_vector[] = {0.5, 0.3, 0.15, 0.05};
+
 void main()
 {
 	input_course(course_num, FILE1);
 	course = new Course[course_num];
+	course_amount = new int[course_num];
+	for (int i = 0; i < course_num; i++)
+	{
+		course_amount[i] = 0;
+	}
 	input_course2(course_num, course, FILE1);
 	input_student(student_num, FILE2);
 	stu = new Student[student_num];
 	input_student2(student_num, stu, FILE2);
 
 	graph = new int*[course_num];
+
 	for (int i = 0; i < course_num; i++)
 	{
 		graph[i] = new int[i + 1];
@@ -38,6 +46,10 @@ void main()
 	cout << endl;
 	for (int i = 0; i < course_num; i++)
 	{
+		if (i < 10)
+			cout << " " << i << "   ";
+		else
+			cout << i << "   ";
 		for (int j = 0; j < i + 1; j++)
 		{
 			cout << graph[i][j] << " ";
@@ -50,9 +62,7 @@ void main()
 		id = update();
 		dye_insert(id);
 	}
-	for (int i = 1; i <= course_num; i++)
-	{
-		cout<< dye_node[i].id<<" ";
-	}
+	expand();
+	output();
 	system("pause");
 }

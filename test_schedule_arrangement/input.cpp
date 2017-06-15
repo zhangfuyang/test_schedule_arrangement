@@ -100,6 +100,8 @@ void input_student2(int student_num, Student* stu, const char* file)
 				if (course[i].name == str)
 				{
 					stu[k].course[stu_course_num++] = i;
+					course_amount[i]++;
+					break;
 				}
 			}
 			num--;
