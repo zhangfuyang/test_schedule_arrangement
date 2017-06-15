@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>  
 #include "global.h"
 #include "macro.h"
 using std::cout;
@@ -207,19 +209,16 @@ int update()
 	int minid;
 	float min = 1000000;
 	float temp;
-	for (int i = 0; i < course_num; i++)
+	int t;
+	srand((unsigned)time(NULL));
+	while (1)
 	{
-		if (course[i].dye == false)
+		t = (int)(course_num - 1)*rand() / (RAND_MAX + 1);
+		if (course[t].dye == false)
 		{
-			temp = cal_time(i);
-			if (temp < min)
-			{
-				min = temp;
-				minid = i;
-			}
+			return t;
 		}
 	}
-	return minid;
 }
 
 

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>  
 #include "global.h"
 #include "macro.h"
 using namespace std;
@@ -51,10 +53,10 @@ void expand()
 	int i;
 	int id;
 	int day;
+	int t;
 	bool button = false;
 	int *copy_list;
-	copy_list = new int[course_num];
-	copy(course_amount, copy_list);
+	srand((unsigned)time(NULL));
 	if (dye_node[course_num].color < TIME)
 	{
 		while (dye_node[course_num].color < TIME)
@@ -63,31 +65,11 @@ void expand()
 			k = k % course_num;
 			if (k == 0)
 				k = course_num;
-			num2 = num;
-			num = getMaxK(copy_list, course_num, k);
-			copy(course_amount, copy_list);
-			if (num2 == num)
+			while (1)
 			{
-				same++;
-			}
-			else
-				same = 0;
-			for (i = 0; i < course_num; i++)
-			{
-				if (course_amount[i] == num && same != 0)
-				{
-					same--;
-				}
-				else if (course_amount[i] == num && same == 0)
-				{
-					id = i;
+				t = 1 + (int)(course_num)*rand() / (RAND_MAX + 1);
+				if (t != dye_node[1].id)
 					break;
-				}
-			}
-			if (id == dye_node[1].id)
-			{
-				k++;
-				continue;
 			}
 			for (i = 1; i <= course_num; i++)
 			{
@@ -95,7 +77,7 @@ void expand()
 				{
 					dye_node[i].color++;
 				}
-				if (dye_node[i].id == id)
+				if (dye_node[i].id == t)
 				{
 					dye_node[i].color++;
 					button = true;
